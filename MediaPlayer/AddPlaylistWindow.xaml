@@ -1,0 +1,94 @@
+﻿<Window x:Class="MediaPlayer.AddPlaylistWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MediaPlayer"
+        mc:Ignorable="d"
+        Title="AddPlaylistWindow" Height="470" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical" Background="LightPink">
+            <TextBlock Text="Create Your Playlist" 
+                       Foreground="White"
+                       FontSize="20" 
+                       FontWeight="Medium" 
+                       FontFamily="Harlow Solid  "
+                       HorizontalAlignment="Center" 
+                       Margin="0 20 0 0"/>
+            <Image Source="icons/disk.png" 
+                   Height="150" 
+                   HorizontalAlignment="Center"
+                   Margin="0 50 0 40"/>
+            <TextBlock Text="Your playlist's name is:"  
+                       Foreground="White" 
+                       FontSize="15" 
+                       HorizontalAlignment="Center"/>
+            <TextBox Name="tbxPlaylistName" 
+                     Height="25" 
+                     Width="150"
+                     Padding="5 2 5 2"
+                     VerticalAlignment="Center"
+                     Margin="0 10 0 10"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Content="Add file" 
+                        Click="btnAddItem_Click" 
+                        Height="30" 
+                        Width="120" 
+                        Margin="0 0 0 7" 
+                        FontWeight="Medium" 
+                        Foreground="White" 
+                        Background="#57A4FF" 
+                        BorderBrush="#1E81CE" 
+                        BorderThickness="3"/>
+                <Button Content="Create" 
+                        Click="btnCreatePlaylist_Click" 
+                        Height="30" 
+                        Width="120"  
+                        FontWeight="Medium" 
+                        Foreground="White" 
+                        Background="#57A4FF" 
+                        BorderBrush="#1E81CE" 
+                        BorderThickness="3"/>
+            </StackPanel>
+        </StackPanel>
+        <DockPanel Grid.Column="1" 
+                   Background="LightPink" 
+                   Opacity="0.5" 
+                   LastChildFill="True">
+            <StackPanel Orientation="Horizontal" 
+                        DockPanel.Dock="Top">
+                <TextBlock Text="Files list" 
+                           Foreground="Red" 
+                           FontSize="20" 
+                           FontWeight="Medium" 
+                           Margin="20"/>
+                <Button Background="Red" 
+                        Width="40" 
+                        Height="40" 
+                        BorderBrush="Transparent" 
+                        Cursor="Hand" 
+                        Click="removeSongPlaylist_click">
+                    <Button.Content>
+                        <Image Source="icons/remove.png" Height="20" HorizontalAlignment="Right"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <ListView x:Name="listview_songOfPlaylist" 
+                      Background="Transparent" 
+                      BorderBrush="Transparent"
+                      Margin="20 0 20 20">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding FileName}" 
+                                   Foreground="Red" FontSize="15" 
+                                   Margin="0,5,0,5"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>
